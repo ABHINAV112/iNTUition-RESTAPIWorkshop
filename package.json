@@ -1,0 +1,18 @@
+{
+  "name": "workshop",
+  "version": "1.0.0",
+  "description": "## What are APIs? API stands for Application Programming Interface. An API is a software intermediary that allows two applications to talk to each other. In other words, an API is the messenger that delivers your **request** to the provider that you’re requesting it from and then delivers the **response** back to you.",
+  "main": "CallingRESTApis.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  }
+}
