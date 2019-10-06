@@ -106,7 +106,7 @@ A type of API which provides access to its service via a **URL**. Requests are m
 
 ## Types of REST APIs
 
-Conventionally, REST APIs fall under into 4 different types of categories. These categories are important during the implementation of an API as they are a component of the request. An API maybe classified based on the following information, however sometimes an API of a certain type may not perform the function stated below. For example, a POST API maybe used to retrieve data from a server. The following are very loose definitions needed to establish a convention for making APIs. Their implementation is completely dependent on the creator.
+Conventionally, REST APIs fall under into 4 different types of categories. These categories are important during the implementation of an API as they are a component of the request. An API maybe classified based on the following information, however sometimes an API of a certain type may not perform the function stated below. For example, a POST API maybe used to retrieve data from a server. The following are very loose definitions needed to establish a convention for making APIs. Their implementation is completely dependent on the creator. For the rest of the content, API and REST API shall be used interchangeably.
 
 ### GET
 
@@ -314,6 +314,14 @@ request(settings,function(res){
 
 4. The function is a callback, which is called after the API has been called. "res has the body of the response"
 
+#### Finally
+
+Run the code by doing
+
+```bash
+$ node .
+```
+
 ---
 
 ## Making REST APIs
@@ -411,6 +419,14 @@ Run the following command to start listening to https requests on a localhost 30
 
 ```javascript
 app.listen(3000);
+```
+
+#### Finally
+
+Run the code by doing
+
+```bash
+$ node .
 ```
 
 ## Additional Information
