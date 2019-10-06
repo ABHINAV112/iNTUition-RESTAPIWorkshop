@@ -2,46 +2,9 @@
 
 _by [Abhinav NB](https://github.com/ABHINAV112) for the iNTUition hackathon_
 
-This workshop features a hands on approach to learning the basics of REST APIs, familiarity with JSON would be required for this workshop.
+This workshop features a hands on approach to learning the basics of REST APIs, familiarity with JSON, and the command line intergace is required for this workshop.
 
----
-
-## Introduction
-
-API stands for Application Programming Interface. An API is a software intermediary that allows two applications to talk to each other. In other words, an API is the messenger that delivers your **request** to the provider that you’re requesting it from and then delivers the **response** back to you. Click [here](https://www.youtube.com/watch?v=s7wmiS2mSXY&t=1s), to see a nice video explaining APIs.
-
-### [Types of APIs](https://ffeathers.wordpress.com/2014/02/16/api-types/)
-
-APIs are classified broadly based on the types of interactions they allow to make. For instance if you want to interact with hardware, you could use a hardware API. These are some of the major classifications:
-
-- Web Service APIs
-- WebSocket APIs
-- Library based APIs
-- Class-based APIs
-- OS functions and routines
-- Object remoting APIs
-- Hardware APIs
-
----
-
-## Web Service APIs
-
-A type of API which provides access to its service via a **URL**. Requests are made to a server, the server then processes the information in the request and sends back a response.
-
-### Different types (write down explanations)
-
-- SOAP
-- XML-RPC and JSON-RPC
-- REST (becoming more used in modern times, easy to use)
-
-## REST APIs
-
-### Different types of REST requests (write down explanations)
-
-- GET
-- POST
-- PUT
-- DELETE
+## ![iNTUition-logo](images/logo.jpeg)
 
 ---
 
@@ -74,7 +37,7 @@ $ snap install postman
 ### NodeJS
 
 ![node js logo](images/node-js.png)
-Node.js is an open source, cross-platform runtime environment for developing server-side and networking applications. Node.js applications are written in JavaScript, and can be run within the Node.js runtime on OS X, Microsoft Windows, and Linux.
+Node.js is an open source, cross-platform runtime environment for developing server-side and networking applications. Node.js applications are written in JavaScript, and can be run within the Node.js runtime on OS X, Microsoft Windows, and Linux. We will be using nodejs here to show you how to call these APIs.
 
 #### Installation
 
@@ -107,24 +70,345 @@ $ sudo apt-get install nodejs
 
 ---
 
+## Introduction
+
+API stands for Application Programming Interface. An API is a software intermediary that allows two applications to talk to each other. In other words, an API is the messenger that delivers your **request** to the provider that you’re requesting it from and then delivers the **response** back to you. Click [here](https://www.youtube.com/watch?v=s7wmiS2mSXY&t=1s), to see a nice video explaining APIs.
+
+### [Types of APIs](https://ffeathers.wordpress.com/2014/02/16/api-types/)
+
+APIs are classified broadly based on the types of interactions they allow to make. For instance if you want to interact with hardware, you could use a hardware API. These are some of the major classifications:
+
+- Web Service APIs
+- WebSocket APIs
+- Library based APIs
+- Class-based APIs
+- OS functions and routines
+- Object remoting APIs
+- Hardware APIs
+
+---
+
+## Web Service APIs
+
+A type of API which provides access to its service via a **URL**. Requests are made to a server, the server then processes the information in the request and sends back a response.
+
+### Different types (write down explanations)
+
+- SOAP
+- XML-RPC and JSON-RPC
+- REST (becoming more used in modern times, easy to use)
+
+---
+
+## Types of REST APIs
+
+Conventionally, REST APIs fall under into 4 different types of categories. These categories are important during the implementation of an API as they are a component of the request. An API maybe classified based on the following information, however sometimes an API may not necessarily do as stated below. For example, a POST API maybe used to retrieve data from a server. The following are very loose definitions needed for a convention, and their implementation is completely based on the creator.
+
+### GET
+
+Type of API which is used to retrieve information of a record from the server, the main data to be processed is recieved from parameters and the URL.
+
+### POST
+
+Type of API which is used to create a new record in the server, the data to be processed is sent primarily through a body of data in the request.
+
+### PUT
+
+Type of API which is used to update existing values of a record in the server, the data to be processed is sent through a mixture of parameters and body.
+
+### DELETE
+
+Type of API which is used to delete a record from a server, the data to be processed is sent through a mixture of parameters and body.
+
+## Components of REST API requests(JSON)
+
+This section describes the format of data which should be sent to the server while making an API call(reqest structure). We are covering only JSON requests in this workshop, the following are the key-value attributes which will be sent to the server.
+
+### Url
+
+The http/https address referring to the API hosted on the web(can also be done through a local host).
+
+```javascript
+  "url": "https://bestjeanist.sandbox.arcadier.io/api/v2/users/",
+```
+
+### Parameters
+
+The URL may contain some additional information which can be used by the server.
+
+```javascript
+  "url": "https://bestjeanist.sandbox.arcadier.io/api/v2/users/key=128'",
+```
+
+### Method
+
+Indicates the type of API being used, whether it is GET, POST, PUT or DELETE.
+
+```javascript
+  "method": "POST",
+```
+
+### Headers
+
+Stores important meta data, describing the data of the response being sent to the server. The server reads this data and decides in what manner the rest of the data is to be processed.
+
+```javascript
+  "headers": {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer 78bb6ee7-38df-4940-b2cf-1bfa12cbbade",
+    "cache-control": "no-cache"
+  },
+```
+
+### Data/Body
+
+This is the body of data sent to the server inside the request, this data will be processed by the server and a response will be sent back.
+<br>
+NOTE: json can be stringified while sending to the server, not necessary
+
+```javascript
+  "data": "{\n  \"ItemDetail\": {\n    \"ID\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"Quantity\": 0,\n  \"Notes\": \"string\",\n  \"CartItemType\": \"string\"\n}"
+```
+
+## Components of REST API responses
+
+This section describes the format of data which is recieved after making an API call, the response has 2 main data attributes.
+
+### Status
+
+The status is a number sent by the server. This number describes whether the API call was succesful or not, if the API call was not succesful it tells you what error went on.
+
+Some common codes are
+
+```
+200 - success
+400 - bad request
+401 - unauthorized
+403 - forbidden
+404 - error not found
+500 - internal server error
+```
+
+### Body
+
+The body contains the information processed by the server, this is the information you will use to perform your computation and manipulations.
+
+---
+
 ## Calling REST APIs
 
 ### Using postman
 
-![home page](images/home.png)
+The home page of the entire postman application.<br>
+![home page](images/home.png)<br>
 
-(Start explaining the home page)
+#### Type of request
+
+Helps you select the type of request you make to the server.<br>
+![api request type selector](images/postman/type.png)<br>
+
+#### URL entry field
+
+To enter the URL related to the REST API.<br>
+![box for URL](images/postman/url.png)<br>
+
+#### Collections
+
+You can save multiple related APIs into a collection over here.<br>
+![Collections](images/postman/collection.png)<br>
+
+#### Params
+
+You can enter the params which are going to be inside the URL<br>
+![Params](images/postman/params-section.png)<br>
+Changes being made into the URL<br>
+![Params-Url](images/postman/params-url.png)<br>
+
+#### Authorization
+
+Over here, you can indicate what type of authorization the API uses. You can also pass in an authorization key.<br>
+![Authorization](images/postman/authorization.png)<br>
+
+#### Headers
+
+Headers can be entered here to describe what type of content is being passed through.<br>
+![Headers](images/postman/headers.png)<br>
+
+#### Body
+
+The body here indicates what kind of content is being sent in the request, the server has access to this content and does its operating based on the content.<br>
+![Body](images/postman/body.png)<br>
+
+#### Code (Very useful)
+
+![Code button](images/postman/code-button.png)<br>
+You can use the code button to generate code which calls the API with the exactly same values<br>
+![Code generated](images/postman/generated-code.png)
 
 ### Using a programming language
 
 Every language has the ability to make https requests, using this we can make calls to REST APIs. We shall be using NodeJS for this workshop.
 
+NodeJS uses several libraries to make calls to APIs.
+
+#### Setting up a directory
+
+First setup the project directory you wish to make your javascript files in.
+
+```bash
+$ mkdir callingApis
+$ cd callingApis
+$ touch index.js
+```
+
+Then make it an npm directory
+
+```bash
+$ npm init -y
+```
+
+To install the required npm modules run the following
+
+```bash
+$ npm install --save request
+```
+
+#### Making the API call
+
+Using Postman to generate the code
+
+1. Go into the postman and the API you wish to call, click the code button. This should generate code to call the API.
+2. Select NodeJS, and copy paste the code into the index.js file.
+
+Creating your own code
+
+1. Make a variable called settings which is a json containing the following fields
+
+```javascript
+var settings = {
+  url: "",
+  headers: {},
+  data: "",
+  method: ""
+};
+```
+
+2. Fill in these fields with the required information in order to make the call.
+3. Now you can call the API by
+
+```javascript
+request(settings,function(res){
+  ...
+});
+```
+
+4. The function is a callback, which is called after the API has been called. "res has the body of the response"
+
 ---
 
 ## Making REST APIs
 
-### http event listeners
+This section shall teach you how to make your own APIs, using NodeJS and a library called [ExpressJS](https://expressjs.com/).
 
-### express
+### Setting up a directory
+
+First setup the project directory you wish to make your javascript files in.
+
+```bash
+$ mkdir makingApis
+$ cd makingApis
+$ touch index.js
+```
+
+Then make it an npm directory
+
+```bash
+$ npm init -y
+```
+
+To install the required npm modules run the following
+
+```bash
+$ npm install --save express body-parser
+```
+
+### Making your own basic express Apis
+
+#### Setting up the basic express http handler
+
+```javascript
+const express = require("express");
+const app = express();
+```
+
+#### Setting up your http request handlers
+
+These handlers respond to cases when a particular url is called, using the app variable created above is used to handle get, post, put and delete requests. Whenever an API call is made to the URL, these send back responses to the caller.
+
+GET
+
+```javascript
+app.get("/data/:value", function(req, res) {
+  ...
+});
+```
+
+POST
+
+```javascript
+app.post("/data", function(req, res) {
+  ...
+});
+```
+
+PUT
+
+```javascript
+app.put("/data/:value", function(req, res) {
+  ...
+});
+```
+
+DELETE
+
+```javascript
+app.delete("/data/:value", function(req, res) {
+  ...
+});
+```
+
+Use the following code to send a response to the caller of the API
+
+```javascript
+res.send(response);
+```
+
+where response is a string or JSON, of the processed data.<br>
+NOTE: remember to return from a http request handler
+
+#### Using middleware
+
+Middle ware are used with every API call, but they do not send back any responses to the user. Here, we wil be using bodyParser middle ware which parses the json body of incoming responses.
+
+```javascript
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+```
+
+#### listening on a local host
+
+Run the following command to start listening to https requests on a localhost 3000.
+
+```javascript
+app.listen(3000);
+```
+
+## Additional Information
 
 ### Deploying
+
+Now that you know how to make a simple express REST API, you can deploy them onto the internet through an online hosting service. Feel free to checkout [firebase functions](https://firebase.google.com/docs/functions/http-events), showing you how to deploy your custom APIs onto the internet.
+
+### CORS
+
+Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served. A web page may freely embed cross-origin images, stylesheets, scripts, iframes, and videos. Certain "cross-domain" requests, notably Ajax requests, are forbidden by default by the same-origin security policy. While making or calling APIs, it is important to take CORS into consideration as often you may not be able to make a cross domain API call. Express has [middleware](https://www.npmjs.com/package/cors) to enable you to make cross domain API calls.

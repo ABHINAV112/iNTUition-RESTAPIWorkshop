@@ -1,0 +1,9 @@
+Custom built APIs
+GET https://x-shore-218708.web.app/api/{id}
+POST https://x-shore-218708.web.app/api
+PUT https://x-shore-218708.web.app/api/{id}
+DELETE https://x-shore-218708.web.app/api
+
+Public APIs
+// TODO: find some
+GET https://api.exchangeratesapi.io/latest

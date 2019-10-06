@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
-const BP = require("body-parser");
+const bodyParser = require("body-parser");
 const fs = require("fs");
 
-app.use(BP.json());
+app.use(bodyParser.json());
 
 app.get("/data/:value", function(req, res) {
   var val = req.params.value;
