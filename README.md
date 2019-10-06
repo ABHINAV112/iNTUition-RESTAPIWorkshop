@@ -2,13 +2,15 @@
 
 _by [Abhinav NB](https://github.com/ABHINAV112) for the iNTUition hackathon_
 
-This workshop features a hands on approach to learning the basics of REST APIs, familiarity with JSON, and the command line intergace is required for this workshop.
+This workshop features a hands on approach to learning the basics of REST APIs. You will learn the types of REST APIs, the components of requests and responses, how to call a REST API and make your very own rest APIs. Familiarity with [JSON](https://www.w3schools.com/whatis/whatis_json.asp), and the [command line interface](https://tutorial.djangogirls.org/en/intro_to_command_line/) will aid you in this workshop.
 
 ## ![iNTUition-logo](images/logo.jpeg)
 
 ---
 
 ## Installation and Setup
+
+We will need the following tools going on with the workshop, the installation procedures are as follows
 
 ### Postman
 
@@ -18,7 +20,7 @@ Postman is a great tool when trying to dissect RESTful APIs made by others or te
 
 #### Downloading
 
-##### Installing through the website
+##### Installing through the website (recommended for windows and mac)
 
 Click [here](https://www.getpostman.com/downloads/) to download postman.
 
@@ -28,7 +30,7 @@ Click [here](https://www.getpostman.com/downloads/) to download postman.
 $ brew cask install postman
 ```
 
-##### Ubuntu
+##### Ubuntu installing through snap (recommended for ubuntu)
 
 ```bash
 $ snap install postman
@@ -41,23 +43,23 @@ Node.js is an open source, cross-platform runtime environment for developing ser
 
 #### Installation
 
-##### Windows
+Windows
 
-Installing through [windows installer](https://nodejs.org/en/download/)
+Click the following link to install through [windows installer](https://nodejs.org/en/download/)
 
-##### Mac
+Mac
 
-Installing through [mac installer](https://nodejs.org/en/download/)
+Click the following link to install through [mac installer](https://nodejs.org/en/download/)
 
-Installing through brew
+Installing through brew, run the following command in your bash terminal
 
 ```bash
 $ brew install node
 ```
 
-##### Linux
+Linux
 
-Installing through apt-get
+Installing through apt-get, run the following commands in your bash terminal
 
 ```bash
 $ sudo apt-get install curl
@@ -92,7 +94,9 @@ APIs are classified broadly based on the types of interactions they allow to mak
 
 A type of API which provides access to its service via a **URL**. Requests are made to a server, the server then processes the information in the request and sends back a response.
 
-### Different types (write down explanations)
+### Different types
+
+<!-- TODO: (write down explanations) -->
 
 - SOAP
 - XML-RPC and JSON-RPC
@@ -102,23 +106,23 @@ A type of API which provides access to its service via a **URL**. Requests are m
 
 ## Types of REST APIs
 
-Conventionally, REST APIs fall under into 4 different types of categories. These categories are important during the implementation of an API as they are a component of the request. An API maybe classified based on the following information, however sometimes an API may not necessarily do as stated below. For example, a POST API maybe used to retrieve data from a server. The following are very loose definitions needed for a convention, and their implementation is completely based on the creator.
+Conventionally, REST APIs fall under into 4 different types of categories. These categories are important during the implementation of an API as they are a component of the request. An API maybe classified based on the following information, however sometimes an API of a certain type may not perform the function stated below. For example, a POST API maybe used to retrieve data from a server. The following are very loose definitions needed to establish a convention for making APIs. Their implementation is completely dependent on the creator.
 
 ### GET
 
-Type of API which is used to retrieve information of a record from the server, the main data to be processed is recieved from parameters and the URL.
+This type of API which is used to retrieve information of a record from the server, the main data to be processed is recieved from parameters and the URL.
 
 ### POST
 
-Type of API which is used to create a new record in the server, the data to be processed is sent primarily through a body of data in the request.
+This type of API which is used to create a new record in the server, the data to be processed is sent primarily through a body of data in the request.
 
 ### PUT
 
-Type of API which is used to update existing values of a record in the server, the data to be processed is sent through a mixture of parameters and body.
+This type of API which is used to update existing values of a record in the server, the data to be processed is sent through a mixture of parameters and body.
 
 ### DELETE
 
-Type of API which is used to delete a record from a server, the data to be processed is sent through a mixture of parameters and body.
+This type of API which is used to delete a record from a server, the data to be processed is sent through a mixture of parameters and body.
 
 ## Components of REST API requests(JSON)
 
@@ -137,15 +141,17 @@ The http/https address referring to the API hosted on the web(can also be done t
 The URL may contain some additional information which can be used by the server.
 
 ```javascript
-  "url": "https://bestjeanist.sandbox.arcadier.io/api/v2/users/key=128'",
+  "url": "https://bestjeanist.sandbox.arcadier.io/api/v2/users/key=128'"
 ```
+
+The parameter here is key.
 
 ### Method
 
 Indicates the type of API being used, whether it is GET, POST, PUT or DELETE.
 
 ```javascript
-  "method": "POST",
+  "method": "POST"
 ```
 
 ### Headers
@@ -160,11 +166,13 @@ Stores important meta data, describing the data of the response being sent to th
   },
 ```
 
+There are several header tags which can be used, click [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) to find out more about them.
+
 ### Data/Body
 
 This is the body of data sent to the server inside the request, this data will be processed by the server and a response will be sent back.
 <br>
-NOTE: json can be stringified while sending to the server, not necessary
+NOTE: json can be stringified while sending to the server, it can also be sent raw
 
 ```javascript
   "data": "{\n  \"ItemDetail\": {\n    \"ID\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"Quantity\": 0,\n  \"Notes\": \"string\",\n  \"CartItemType\": \"string\"\n}"
@@ -172,7 +180,7 @@ NOTE: json can be stringified while sending to the server, not necessary
 
 ## Components of REST API responses
 
-This section describes the format of data which is recieved after making an API call, the response has 2 main data attributes.
+This section describes the format of data which is recieved after making an API call, the response has 2 important components.
 
 ### Status
 
@@ -189,9 +197,11 @@ Some common codes are
 500 - internal server error
 ```
 
+Click [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) for a list of all the codes.
+
 ### Body
 
-The body contains the information processed by the server, this is the information you will use to perform your computation and manipulations.
+The body contains the information processed by the server, this is the information you will use to perform your computation and manipulations. The structure of the body is completely dependent on the creator of the API, his documentation will tell you more about the
 
 ---
 
@@ -412,3 +422,7 @@ Now that you know how to make a simple express REST API, you can deploy them ont
 ### CORS
 
 Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served. A web page may freely embed cross-origin images, stylesheets, scripts, iframes, and videos. Certain "cross-domain" requests, notably Ajax requests, are forbidden by default by the same-origin security policy. While making or calling APIs, it is important to take CORS into consideration as often you may not be able to make a cross domain API call. Express has [middleware](https://www.npmjs.com/package/cors) to enable you to make cross domain API calls.
+
+### Public APIs
+
+In order to get realtime information or process data on servers online, we use public APIs. For instance, if you wish to get a report of current weather or get information on exchange rates. A public API ensures that your application will remain dynamic. Most APIs are well documented, the documentation of these APIs contain information on the components of the request and the structure of the response sent back. Click [here](https://github.com/public-apis/public-apis) for a list of free to use public APIs which may benefit you in making your hack.
