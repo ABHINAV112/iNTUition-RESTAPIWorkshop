@@ -26,7 +26,7 @@ app.get("/api/:id", async (req, res) => {
 
 app.post("/api", async (req, res) => {
   //   console.log(JSON.parse(req.body));
-  var ref = await db.collection("storing").add(JSON.parse(req.body));
+  var ref = await db.collection("storing").add(req.body);
   return res.send({ id: ref.id });
 });
 
