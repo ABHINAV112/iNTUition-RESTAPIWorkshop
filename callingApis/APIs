@@ -1,9 +1,18 @@
-Custom built APIs
+Custom built APIs:
 GET https://x-shore-218708.web.app/api/{id}
+
 POST https://x-shore-218708.web.app/api
+
 PUT https://x-shore-218708.web.app/api/{id}
+
 DELETE https://x-shore-218708.web.app/api
 
-Public APIs
-// TODO: find some
+Public APIs:
+GET https://cat-fact.herokuapp.com/facts
+
 GET https://api.exchangeratesapi.io/latest
+
+GET https://api.cryptonator.com/api/ticker/btc-usd
+
+GET https://avatars.dicebear.com/v2/{sprites}/{seed}.svg?options[mood][]=happy
+sprites -> [male, female, human, identicon, initials, bottts, avataaars, jdenticon, gridy]

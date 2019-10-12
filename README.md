@@ -96,8 +96,6 @@ A type of API which provides access to its service via a **URL**. Requests are m
 
 ### Different types
 
-<!-- TODO: (write down explanations) -->
-
 - SOAP
 - XML-RPC and JSON-RPC
 - REST (becoming more used in modern times, easy to use)
@@ -186,7 +184,7 @@ This section describes the format of data which is recieved after making an API 
 
 The status is a number sent by the server. This number describes whether the API call was succesful or not, if the API call was not succesful it tells you what error went on.
 
-Some common codes are
+Some common codes you may run into are
 
 ```
 200 - success
@@ -437,8 +435,34 @@ Now that you know how to make a simple express REST API, you can deploy them ont
 
 ### CORS
 
-Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served. A web page may freely embed cross-origin images, stylesheets, scripts, iframes, and videos. Certain "cross-domain" requests, notably Ajax requests, are forbidden by default by the same-origin security policy. While making or calling APIs, it is important to take CORS into consideration as often you may not be able to make a cross domain API call. Express has [middleware](https://www.npmjs.com/package/cors) to enable you to make cross domain API calls.
+Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served. A web page may freely embed cross-origin images, stylesheets, scripts, iframes, and videos. Certain "cross-domain" requests, notably Ajax requests, are forbidden by default by the same-origin security policy. While making or calling APIs, it is important to take CORS into consideration as often you may not be able to make a cross domain API call. Express has [middleware](https://www.npmjs.com/package/cors) to enable you to make cross domain API calls, if you need to make an easily accesible API use this middleware otherwise do not.
 
 ### Public APIs
 
 In order to get realtime information or process data on servers online, we use public APIs. For instance, if you wish to get a report of current weather or get information on exchange rates. A public API ensures that your application will remain dynamic. Most APIs are well documented, the documentation of these APIs contain information on the components of the request and the structure of the response sent back. Click [here](https://github.com/public-apis/public-apis) for a list of free to use public APIs which may benefit you in making your hack.
+
+### Async Functions
+
+While coding in several languages API calls are made asynchronously, what does this mean?
+
+```javascript
+var res;
+request(settings, function(res) {
+  res = res;
+});
+console.log("response", res);
+```
+
+What do you think gets printed out now?
+
+You get undefined as an output, this is because the callback function inside the request call, gets executed only after the response is recieved. The response maybe recieved before or after logging the response(in most cases after), this is an example of code running asynchronously.
+
+```javascript
+var res;
+request(settings, function(res) {
+  res = res;
+  console.log("response", res);
+});
+```
+
+This on the other hand will print the response recieved from the API correctly. Asynchronous functions help improve user experience of several application as the user won't have to wait for the function to finish the call, they could do something else with the application. This [video](https://www.youtube.com/watch?v=N5Ky-mz6n-8) explains asynchronous functions being used on the clientside really well.
